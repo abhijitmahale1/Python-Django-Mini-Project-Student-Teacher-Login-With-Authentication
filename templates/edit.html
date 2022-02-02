@@ -1,0 +1,36 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block body %}
+
+        {% include 'messages.html' %}
+        <br>
+        <form action="update" method="post">
+            {% csrf_token %}
+            {% for i in data %}
+        <center> 
+            <h2>Update Data</h2>
+            <input type="hidden" name="id" value="{{i.id}}">
+            <input type="text" name="fname" placeholder="First Name" value="{{i.fname}}"><br><br>
+            <input type="text" name="lname" placeholder="Last Name" value="{{i.lname}}"><br><br>
+             <input type="email" name="email" placeholder="Email" value="{{i.email}}"><br><br>
+             <input type="password" name="password" placeholder="Password" value="{{i.password}}"><br><br>
+              <input type="text" name="city" placeholder="Address" value="{{i.city}}"><br><br>
+              <input type="number" name="contact" placeholder="Contact" value="{{i.contact}}"><br><br>
+
+            <button type="submit">Update</button><br>
+        </center> 
+        </form>
+        {% endfor %}
+        <script>
+            setTimeout(function(){
+                if($('#msg').length>0)
+                {
+                    $('#msg').remove();
+                }
+            },2000)
+    </script>
+    
+    
+        {% endblock %}
+   
